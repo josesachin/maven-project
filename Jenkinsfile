@@ -2,7 +2,7 @@ pipeline {
      agent any
      stages {
          stage('clone my code'){
-           git 'http://github/josesachin/maven-project'
+           git 'https://github.com/josesachin/maven-project/blob/master/Jenkinsfile'
            }
          stage('compile my code')
          
