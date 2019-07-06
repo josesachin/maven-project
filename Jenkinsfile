@@ -27,4 +27,14 @@ pipeline {
             }
 }
 }   
+    {
+        stage ('package Stage') {
+
+            steps {
+                withMaven(maven : 'LocalMaven') {
+                    sh 'mvn clean package'
+                }
+            }
+}
+}  
 }
