@@ -1,17 +1,20 @@
 pipeline {
-     agent any
-     stages {
-         stage('clone my code'){
-           git 'https://github.com/josesachin/maven-project/blob/master'
-           }
-         stage('compile my code')
-         
-             steps {
-                 withMaven(maven  :  'LocalMaven')  {
-                     sh  'mvn  clean  compile'
-                     
-                     }
-                     }
-                     }
-                     }
-                     }
+    agent any
+
+
+    stages {
+        stage('SCM Checkout'){
+          git 'https://github.com/josesachin/maven-project'
+        }
+  }
+    {
+        stage ('Compile Stage') {
+
+            steps {
+                withMaven(maven : 'LocalMaven') {
+                    sh 'mvn clean compile'
+                }
+            }
+}
+}
+}
