@@ -36,5 +36,15 @@ pipeline {
                 }
             }
 }
-}  
+} 
+    {
+        stage ('verify Stage') {
+
+            steps {
+                withMaven(maven : 'LocalMaven') {
+                    sh 'mvn clean verify'
+                }
+            }
+}
+}
 }
