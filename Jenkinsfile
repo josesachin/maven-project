@@ -8,7 +8,7 @@ pipeline {
         }
   }
     {
-        stage ('Compile Stage') {
+        stage ('compile Stage') {
 
             steps {
                 withMaven(maven : 'LocalMaven') {
