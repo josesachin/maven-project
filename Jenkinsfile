@@ -47,4 +47,14 @@ pipeline {
             }
 }
 }
+     {
+        stage ('install Stage') {
+
+            steps {
+                withMaven(maven : 'LocalMaven') {
+                    sh 'mvn clean install'
+                }
+            }
+}
+}
 }
