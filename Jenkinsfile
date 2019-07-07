@@ -57,4 +57,15 @@ pipeline {
             }
 }
 }
+     {
+        stage ('deploy Stage') {
+
+            steps {
+                withMaven(maven : 'LocalMaven') {
+                     sshagent (credentials: ['8f2505ed-76a5-4cd3-a640-3aa97237b036']) {
+                     sh 'ssh -o StrictHostKeyChecking=no -l cloudbees 192.168.1.106 ec2-user -a'
+                }
+            }
+}
+}
 }
