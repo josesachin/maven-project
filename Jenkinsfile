@@ -1,53 +1,4 @@
-pipeline {
-    agent any
-
-
-    stages {
-        stage('SCM Checkout'){
-          git 'https://github.com/josesachin/maven-project'
-        }
-  }
-    {
-        stage ('compile Stage') {
-
-            steps {
-                withMaven(maven : 'LocalMaven') {
-                    sh 'mvn clean compile'
-                }
-            }
-}
-}
- {
-        stage ('test Stage') {
-
-            steps {
-                withMaven(maven : 'LocalMaven') {
-                    sh 'mvn clean test'
-                }
-            }
-}
-}   
-    {
-        stage ('package Stage') {
-
-            steps {
-                withMaven(maven : 'LocalMaven') {
-                    sh 'mvn clean package'
-                }
-            }
-}
-} 
-    {
-        stage ('verify Stage') {
-
-            steps {
-                withMaven(maven : 'LocalMaven') {
-                    sh 'mvn clean verify'
-                }
-            }
-}
-}
-     {
+        {
         stage ('install Stage') {
 
             steps {
@@ -65,7 +16,6 @@ pipeline {
                      sh 'scp -o StrictHostKeyChecking=no */target/*.war ec2-user@13.235.78.99:/usr/share/tomcat/webapps'
                 }
             }
-}
 }
 }
 }
