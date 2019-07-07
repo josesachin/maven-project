@@ -1,4 +1,13 @@
-        {
+pipeline {
+    agent any
+
+
+    stages {
+        stage('SCM Checkout'){
+          git 'https://github.com/josesachin/maven-project'
+        }
+  }       
+{
         stage ('install Stage') {
 
             steps {
