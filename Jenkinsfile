@@ -6,7 +6,17 @@ pipeline {
         stage('SCM Checkout'){
           git 'https://github.com/josesachin/maven-project'
         }
-  }       
+  }  
+{
+        stage ('compile Stage') {
+            agent {label 'maven' }
+            steps {
+                withMaven(maven : 'LocalMaven') {
+                    sh 'mvn clean compile'
+                }
+            }
+}
+}
 {
         stage ('install Stage') {
 
